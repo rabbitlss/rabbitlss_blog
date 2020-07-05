@@ -1,26 +1,23 @@
-sudo: false
-language: go
-go:
-  - 1.10.x
-  - 1.11.x
-  - 1.12.x
-  - 1.13.x
-git:
-    depth: 1
-before_install:
-  - go get -v golang.org/x/lint/golint
-install: go get -v github.com/gohugoio/hugo
+language: c
+
+os:
+  - linux
+
+install:
+  - wget --quiet https://github.com/gohugoio/hugo/releases/download/v0.58.3/hugo_0.58.3_Linux-64bit.tar.gz
+  - tar xzvf hugo_0.58.3_Linux-64bit.tar.gz
+  - export PATH=$PATH:$PWD
+
 script:
-    ‐ hugo
+  - hugo
+
 deploy:
-    provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    on:
-        branch: master
-    local_dir: public
-    repo: <username>/<username>.github.io
-    fqdn: <custom-domain-if-needed>
-    target_branch: master
-    email: <github-email>
-    name: <github-username>
+  repo: <username>/<username>.github.io
+  provider: pages # 重要，指定这是一份github pages的部署配置
+  skip-cleanup: true # 重要，不能省略
+  local-dir: public # 重要，静态站点文件所在目录
+  target-branch: master # 重要，要将静态站点文件推送到哪个分支
+  github-token: $GITHUB_TOKEN # 重要，需要在GitHub上申请、再到配置到Travis
+  keep-history: true # 是否保持target-branch分支的提交记录
+  on:
+    branch: master # 博客源码拉取的分支
