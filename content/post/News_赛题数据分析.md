@@ -1,7 +1,7 @@
 ---
 title: "News_赛题数据分析"
-date: 2020-07-21T23:10:23+08:00
-lastmod: 2020-07-21T23:50:23+08:00
+date: 2020-07-22T23:10:23+08:00
+lastmod: 2020-07-22T23:50:23+08:00
 draft: false
 tags: ["preview", "NLP", "tag-5"]
 categories: ["NLP"]
@@ -9,9 +9,6 @@ categories: ["NLP"]
 toc: false
 
 ---
-
-
-
 
 本节是通过数据分析来对天池入门赛数据做一些学习。
 
