@@ -1,0 +1,20 @@
+language: c
+
+os:
+  - linux
+
+install: go get -v github.com/gohugoio/hugo
+
+script:
+  - hugo
+
+deploy:
+  repo: <username>/<username>.github.io
+  provider: pages # 重要，指定这是一份github pages的部署配置
+  skip-cleanup: true # 重要，不能省略
+  local-dir: public # 重要，静态站点文件所在目录
+  target-branch: master # 重要，要将静态站点文件推送到哪个分支
+  github-token: $GITHUB_TOKEN # 重要，需要在GitHub上申请、再到配置到Travis
+  keep-history: true # 是否保持target-branch分支的提交记录
+  on:
+    branch: master # 博客源码拉取的分支
